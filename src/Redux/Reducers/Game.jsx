@@ -11,8 +11,10 @@ const infoGame = (state = initialGameState, action) => {
   switch (action.type) {
     case INIT_GAME_STATE:
       // eslint-disable-next-line no-param-reassign
-      state.initGame = action.value;
-      return state;
+      return {
+        ...state,
+        matchId: action.value,
+      };
 
     default:
       return state;

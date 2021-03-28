@@ -15,5 +15,6 @@ module.exports = {
   plugins: ["react", "prettier", "jest"],
   rules: {
     "prettier/prettier": ["error", { endOfLine: "auto" }],
+    "react/prop-types": "off",
   },
 };
