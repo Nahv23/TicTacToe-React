@@ -1,10 +1,10 @@
-import { INIT_GAME_STATE } from "../Actions";
+import { INIT_GAME_STATE, USER_CHOOSE_SYMBOL } from "../Actions";
 
 const initialGameState = {
   matchId: "",
   boardState: ["-", "-", "-", "-", "-", "-", "-", "-", "-"],
   lastMove: { char: "", position: "" },
-  whoStart: { player: "", char: "" },
+  whoStarts: { player: "", char: "" },
 };
 
 const infoGame = (state = initialGameState, action) => {
@@ -13,7 +13,14 @@ const infoGame = (state = initialGameState, action) => {
       // eslint-disable-next-line no-param-reassign
       return {
         ...state,
-        matchId: action.value,
+        matchId: action.value[0],
+        whoStarts: { player: action.value[1], char: "" },
+      };
+    case USER_CHOOSE_SYMBOL:
+      // eslint-disable-next-line no-param-reassign
+      return {
+        ...state,
+        whoStarts: { char: action.value },
       };
 
     default:

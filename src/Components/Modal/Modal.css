@@ -1,0 +1,38 @@
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  padding: 2rem 3rem;
+  display: inline-block;
+  border: 3px solid #333333;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  letter-spacing: 0.3ch;
+  background: #ffffff;
+  -webkit-border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  -moz-border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  -ms-border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  -o-border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+}
+
+.modal::before {
+  content: "";
+  border: 2px solid #353535;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+  border-radius: 1% 1% 2% 4% / 3% 6% 5% 4%;
+  -webkit-border-radius: 1% 1% 2% 4% / 3% 6% 5% 4%;
+  -moz-border-radius: 1% 1% 2% 4% / 3% 6% 5% 4%;
+  -ms-border-radius: 1% 1% 2% 4% / 3% 6% 5% 4%;
+  -o-border-radius: 1% 1% 2% 4% / 3% 6% 5% 4%;
+}
+
+.modal > h3{
+    font-size: 1em;
+}

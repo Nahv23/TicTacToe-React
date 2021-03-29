@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createRandomID } from "../utils/functions";
+import { createRandomID, randomWhoStarts } from "../utils/functions";
 import "./App.css";
+import GameSpace from "./GameSpace/GameSpace";
 
 function App({ gameState, loadIDGameAction }) {
   const loadingIDGame = () => {
     const matchIdGame = createRandomID();
-    loadIDGameAction(matchIdGame);
+    const whoStarts = randomWhoStarts();
+    loadIDGameAction([matchIdGame, whoStarts]);
   };
 
   return (
@@ -22,7 +24,7 @@ function App({ gameState, loadIDGameAction }) {
         </section>
       ) : (
         <section>
-          <h3>BOARD</h3>
+          <GameSpace />
         </section>
       )}
     </div>
