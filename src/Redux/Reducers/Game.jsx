@@ -6,7 +6,7 @@ import {
 
 const initialGameState = {
   matchId: "",
-  boardState: ["-", "-", "-", "-", "-", "-", "-", "-", "-"],
+  boardState: ["-", "-", "X", "-", "-", "O", "-", "-", "-"],
   lastMove: { char: "", position: "" },
   whoStarts: { player: "", char: "" },
 };

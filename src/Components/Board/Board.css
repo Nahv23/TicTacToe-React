@@ -1,0 +1,13 @@
+.board{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	margin: 7vw auto;
+	width: 25vw;
+	height: 25vw;
+	-webkit-box-shadow: -1px 3px 20px 7px rgb(174 179 243);
+	-moz-box-shadow: -1px 3px 20px 7px rgb(174 179 243);
+	box-shadow: -1px 3px 20px 7px rgb(174 179 243);
+}	

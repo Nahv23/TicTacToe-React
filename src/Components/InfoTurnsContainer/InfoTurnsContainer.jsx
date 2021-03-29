@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import "./TurnsContainer.css";
+import "./InfoTurnsContainer.css";
 
 const TurnsContainer = ({ gameState }) => {
   // const nextTurn = () => {

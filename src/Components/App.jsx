@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createRandomID, randomWhoStarts } from "../utils/functions";
+import { createRandomID, randomWhoStarts } from "../utils/functionsInitGame";
 import "./App.css";
 import GameSpace from "./GameSpace/GameSpace";
 

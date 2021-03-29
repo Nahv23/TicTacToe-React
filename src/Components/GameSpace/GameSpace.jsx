@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import Modal from "../Modal/Modal";
-import TurnsContainer from "../TurnsContainer/TurnsContainer";
-import { randomAssignedMark } from "../../utils/functions";
+import InfoTurnsContainer from "../InfoTurnsContainer/InfoTurnsContainer";
+import { randomAssignedMark } from "../../utils/functionsInitGame";
 import "./GameSpace.css";
+import Board from "../Board/Board";
 
 const GameSpace = ({
   gameState,
@@ -60,7 +61,8 @@ const GameSpace = ({
   }
   return (
     <div className="GameSpace" id="GameSpace">
-      <TurnsContainer />
+      <InfoTurnsContainer />
+      <Board />
     </div>
   );
 };

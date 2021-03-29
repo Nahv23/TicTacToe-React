@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   height: 100vh;
+  background-color: #282c34;
 }
 
 .App-header {
@@ -10,6 +11,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 50px;
 }
 
+.App-header > h1 {
+  color: #424242;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 54px #00f,
+    0 0 80px #163e3e, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+}

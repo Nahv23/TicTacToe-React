@@ -1,0 +1,56 @@
+.square {
+  flex: 1 1 30%;
+  height: 35%;
+  background-color: #3a3a3a;
+  border: 1px solid #c7c7fd;
+}
+
+.square.X {
+  color: #fb4264;
+  font-size: 7vw;
+  line-height: 5vw;
+  text-shadow: 0 0 3vw #f40a35;
+  animation: neonRed 3s linear infinite;
+  -moz-animation: neonRed 3s linear infinite;
+  -webkit-animation: neonRed 3s linear infinite;
+  -o-animation: neonRed 2s linear infinite;
+}
+
+@keyframes neonRed {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16,
+      0 0 10vw #fa1c16, 0 0 0.4vw #fed128, 0.5vw 0.5vw 0.1vw #806914;
+    color: #fed128;
+  }
+  50% {
+    text-shadow: 0 0 0.5vw #800e0b, 0 0 1.5vw #800e0b, 0 0 5vw #800e0b,
+      0 0 5vw #800e0b, 0 0 0.2vw #800e0b, 0.5vw 0.5vw 0.1vw #40340a;
+    color: #806914;
+  }
+}
+
+.square.O {
+  color: #426dfb;
+  font-size: 6vw;
+  line-height: 5vw;
+  text-shadow: 0 0 3vw #2356ff;
+  animation: fluxBlue 2s linear infinite;
+  -moz-animation: fluxBlue 2s linear infinite;
+  -webkit-animation: fluxBlue 2s linear infinite;
+  -o-animation: fluxBlue 2s linear infinite;
+}
+
+@keyframes fluxBlue {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff,
+      0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe, 0.5vw 0.5vw 0.1vw #147280;
+    color: #28d7fe;
+  }
+  50% {
+    text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
+      0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
+    color: #146c80;
+  }
+}
