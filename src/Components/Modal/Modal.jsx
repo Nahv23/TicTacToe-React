@@ -12,7 +12,7 @@ const Modal = ({ handleClose, userChooseSymbol, title, subtitle, isUser }) => {
     <div className="modal">
       <section className="modal-main">
         {title && <h3>{title}</h3>}
-        {subtitle && <h4>{title}</h4>}
+        {subtitle && <h4>{subtitle}</h4>}
         {isUser && (
           <div>
             <button

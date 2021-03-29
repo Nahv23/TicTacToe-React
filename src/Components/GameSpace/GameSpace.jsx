@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import Modal from "../Modal/Modal";
+import TurnsContainer from "../TurnsContainer/TurnsContainer";
 import { randomAssignedMark } from "../../utils/functions";
 import "./GameSpace.css";
 
@@ -59,9 +60,7 @@ const GameSpace = ({
   }
   return (
     <div className="GameSpace" id="GameSpace">
-      <section>
-        <h3>FUNCIONO</h3>
-      </section>
+      <TurnsContainer />
     </div>
   );
 };

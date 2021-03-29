@@ -1,0 +1,88 @@
+/* .turnsContainer {
+  margin: 20px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.turn-table{
+    min-width: 7em;
+}
+
+.turn-table > .turn{    
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+.turn-table > .active{
+    border-left: 10px solid blue;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+} */
+
+table.turn-table {
+  margin-top: 20px;
+  margin-left: 25%;
+  border: 1px solid #1c6ea4;
+  background-color: #eeeeee;
+  width: 50%;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.turn-table td,
+table.turn-table th {
+  padding: 2px 0px;
+}
+table.turn-table tbody td {
+  font-size: 10px;
+}
+
+.turn.active {
+  font-weight: bold;
+  background-color: #c3eec2;
+  text-transform: uppercase;
+
+  animation-name: blink;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name: blink;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
