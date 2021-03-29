@@ -9,10 +9,7 @@ const GameSpace = ({ gameState, userChooseSymbolAction }) => {
   const [_showModal, _setShowModal] = useState(true);
 
   // eslint-disable-next-line no-underscore-dangle
-  const _handleClose = () => {
-    console.log("ENTRA");
-    _setShowModal(false);
-  };
+  const _handleClose = () => _setShowModal(false);
 
   const userChooseSymbol = (userSymbol) => {
     userChooseSymbolAction(userSymbol);
@@ -23,7 +20,6 @@ const GameSpace = ({ gameState, userChooseSymbolAction }) => {
     gameState.whoStarts.player === "User" &&
     gameState.whoStarts.char === ""
   ) {
-    // userChooseSymbol(whoStarts);
     return (
       <div className="GameSpace" id="GameSpace">
         <section>
@@ -49,8 +45,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  userChooseSymbolAction: (XXX) =>
-    dispatch({ type: "USER_CHOOSE_SYMBOL", value: XXX }),
+  userChooseSymbolAction: (symbol) =>
+    dispatch({ type: "USER_CHOOSE_SYMBOL", value: symbol }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameSpace);

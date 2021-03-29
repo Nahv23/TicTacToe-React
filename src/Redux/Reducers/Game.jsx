@@ -20,7 +20,7 @@ const infoGame = (state = initialGameState, action) => {
       // eslint-disable-next-line no-param-reassign
       return {
         ...state,
-        whoStarts: { char: action.value },
+        whoStarts: { player: "User", char: action.value },
       };
 
     default:

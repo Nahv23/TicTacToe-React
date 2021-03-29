@@ -11,21 +11,29 @@ const Modal = ({ handleClose, userChooseSymbol }) => {
   return ReactDOM.createPortal(
     <div className="modal">
       <section className="modal-main">
-        <h3>Choose your mark</h3>
+        <h3>Choose your symbol</h3>
         <div>
-          <button type="button" value="X" onClick={() => setsymbol("X")}>
+          <button
+            type="button"
+            value="X"
+            onClick={(event) => setsymbol(event.target.value)}
+          >
             X
           </button>
-          <button type="button" value="O" onClick={() => setsymbol("O")}>
+          <button
+            type="button"
+            value="O"
+            onClick={(event) => setsymbol(event.target.value)}
+          >
             O
           </button>
         </div>
         <div className="modal-footer">
           <button
+            disabled={`${symbol === "" ? "disabled" : ""}`}
             type="button"
             onClick={() => {
-              //   userChooseSymbol(symbol);
-              // eslint-disable-next-line no-undef
+              userChooseSymbol(symbol);
               handleClose();
             }}
           >
