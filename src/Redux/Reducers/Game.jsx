@@ -1,4 +1,8 @@
-import { INIT_GAME_STATE, USER_CHOOSE_SYMBOL } from "../Actions";
+import {
+  INIT_GAME_STATE,
+  USER_CHOOSE_SYMBOL,
+  CPU_CHOOSE_SYMBOL,
+} from "../Actions";
 
 const initialGameState = {
   matchId: "",
@@ -16,11 +20,18 @@ const infoGame = (state = initialGameState, action) => {
         matchId: action.value[0],
         whoStarts: { player: action.value[1], char: "" },
       };
+
     case USER_CHOOSE_SYMBOL:
       // eslint-disable-next-line no-param-reassign
       return {
         ...state,
         whoStarts: { player: "User", char: action.value },
+      };
+    case CPU_CHOOSE_SYMBOL:
+      // eslint-disable-next-line no-param-reassign
+      return {
+        ...state,
+        whoStarts: { player: "CPU", char: action.value },
       };
 
     default:

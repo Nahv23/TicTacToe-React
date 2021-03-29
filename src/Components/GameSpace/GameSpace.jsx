@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import Modal from "../Modal/Modal";
-// import { randomAssignedMark } from "../../utils/functions";
+import { randomAssignedMark } from "../../utils/functions";
 import "./GameSpace.css";
 
-const GameSpace = ({ gameState, userChooseSymbolAction }) => {
+const GameSpace = ({
+  gameState,
+  userChooseSymbolAction,
+  cpuChooseSymbolAction,
+}) => {
   // eslint-disable-next-line no-unused-vars
   const [_showModal, _setShowModal] = useState(true);
 
@@ -13,6 +17,12 @@ const GameSpace = ({ gameState, userChooseSymbolAction }) => {
 
   const userChooseSymbol = (userSymbol) => {
     userChooseSymbolAction(userSymbol);
+  };
+
+  const cpuChooseSymbol = () => {
+    const cpuSymbol = randomAssignedMark();
+    _setShowModal(false);
+    cpuChooseSymbolAction(cpuSymbol);
   };
 
   if (
@@ -24,9 +34,25 @@ const GameSpace = ({ gameState, userChooseSymbolAction }) => {
       <div className="GameSpace" id="GameSpace">
         <section>
           <Modal
+            title="You first"
+            subtitle="Choose your symbol"
+            isUser
             handleClose={_handleClose}
             userChooseSymbol={userChooseSymbol}
           />
+        </section>
+      </div>
+    );
+    // eslint-disable-next-line no-else-return
+  } else if (
+    _showModal &&
+    gameState.whoStarts.player === "CPU" &&
+    gameState.whoStarts.char === ""
+  ) {
+    return (
+      <div className="GameSpace" id="GameSpace">
+        <section>
+          <Modal title="CPU goes first" handleClose={cpuChooseSymbol} />
         </section>
       </div>
     );
@@ -34,7 +60,7 @@ const GameSpace = ({ gameState, userChooseSymbolAction }) => {
   return (
     <div className="GameSpace" id="GameSpace">
       <section>
-        <h1> FUNCIONO </h1>
+        <h3>FUNCIONO</h3>
       </section>
     </div>
   );
@@ -47,6 +73,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   userChooseSymbolAction: (symbol) =>
     dispatch({ type: "USER_CHOOSE_SYMBOL", value: symbol }),
+  cpuChooseSymbolAction: (symbol) =>
+    dispatch({ type: "CPU_CHOOSE_SYMBOL", value: symbol }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameSpace);
