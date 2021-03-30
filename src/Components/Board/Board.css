@@ -11,3 +11,13 @@
 	-moz-box-shadow: -1px 3px 20px 7px rgb(174 179 243);
 	box-shadow: -1px 3px 20px 7px rgb(174 179 243);
 }	
+
+
+@media (max-height: 750px) {
+	.board {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+  }

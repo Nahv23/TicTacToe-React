@@ -5,6 +5,7 @@ import "./App.css";
 import GameSpace from "./GameSpace/GameSpace";
 
 function App({ gameState, loadIDGameAction }) {
+  // eslint-disable-next-line no-unused-vars
   const loadingIDGame = () => {
     const matchIdGame = createRandomID();
     const whoStarts = randomWhoStarts();
@@ -18,8 +19,15 @@ function App({ gameState, loadIDGameAction }) {
       </header>
       {gameState.matchId === "" ? (
         <section>
-          <button type="button" value="PLAY" onClick={() => loadingIDGame()}>
-            PLAY
+          <button
+            className="start-play"
+            type="button"
+            value="PLAY"
+            onClick={() => loadingIDGame()}
+          >
+            <h3>
+              PL<span className="first">A</span>Y
+            </h3>
           </button>
         </section>
       ) : (
