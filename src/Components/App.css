@@ -21,7 +21,7 @@
 }
 
 
-section > button {
+.App section > button.start-play {
   background:rgb(40 44 52);
   position: absolute;
   left: 50%;
@@ -36,11 +36,11 @@ section > button {
   cursor: pointer;
 }
 
-section > button:hover {
+.App section > button.start-play:hover {
   animation: border-flicker 2s linear forwards;
 }
 
-button > h3 {
+.App button.start-play > h3 {
   font-family: "Open Sans";
   font-weight: 300;
   font-size:2.9em;
@@ -48,11 +48,11 @@ button > h3 {
   color: rgb(120 0 33 / 75%);
 }
 
-section > button:hover h3 {
+.App section > button.start-play:hover h3 {
   animation: text-flicker 2s linear forwards;
 }
 
-section > button:hover .first {
+.App section > button.start-play:hover .first {
   animation: letter-flicker 3s linear infinite;
 }
 
@@ -246,7 +246,7 @@ section > button:hover .first {
     margin-bottom: 4vh;
   }
 
-  button {
+  .App section > button.start-play {
     min-width: 20vh;
     min-height: 5vw;
     text-align: center;
@@ -255,7 +255,7 @@ section > button:hover .first {
     cursor: pointer;
   }
   
-  h3 {
+  .App button.start-play > h3 {
     font-weight: 200;
     font-size:1.9em;
     color: rgb(120 0 33 / 75%);
