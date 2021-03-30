@@ -37,7 +37,6 @@ const Board = ({
       _setShowModal(true);
     }
     if (isBoardFull(gameState.boardState)) {
-      console.log("ENTRA");
       setisFinnishByBoardFull(true);
       _setShowModal(true);
     }
