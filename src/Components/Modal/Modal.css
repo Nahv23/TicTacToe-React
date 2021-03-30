@@ -24,6 +24,10 @@
   text-align: center;
 }
 
+.modal-main h4{
+  text-align: center;
+}
+
 .modal .modal-footer {
   display: flex;
   flex-direction: column;

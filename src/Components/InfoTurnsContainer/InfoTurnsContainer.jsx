@@ -11,14 +11,7 @@ const TurnsContainer = ({ gameState }) => (
         <tr>
           <td
             className={`turn ${
-              gameState.nextTurn ===
-              whichIsMySymbolAssigned(
-                "User",
-                gameState.whoStarts.player,
-                gameState.whoStarts.char
-              )
-                ? "active"
-                : ""
+              gameState.nextTurn.player === "User" ? "active" : ""
             }`}
           >
             <p>
@@ -26,11 +19,11 @@ const TurnsContainer = ({ gameState }) => (
               {`${
                 whichIsMySymbolAssigned(
                   "User",
-                  gameState.whoStarts.player,
-                  gameState.whoStarts.char
+                  gameState.nextTurn.player,
+                  gameState.nextTurn.char
                 ) === "X"
-                  ? "X"
-                  : "O"
+                  ? "O"
+                  : "X"
               }`}
             </p>
           </td>
@@ -38,14 +31,7 @@ const TurnsContainer = ({ gameState }) => (
         <tr>
           <td
             className={`turn ${
-              gameState.nextTurn ===
-              whichIsMySymbolAssigned(
-                "CPU",
-                gameState.whoStarts.player,
-                gameState.whoStarts.char
-              )
-                ? "active"
-                : ""
+              gameState.nextTurn.player === "CPU" ? "active" : ""
             }`}
           >
             <p>
@@ -53,11 +39,11 @@ const TurnsContainer = ({ gameState }) => (
               {`${
                 whichIsMySymbolAssigned(
                   "CPU",
-                  gameState.whoStarts.player,
-                  gameState.whoStarts.char
+                  gameState.nextTurn.player,
+                  gameState.nextTurn.char
                 ) === "X"
-                  ? "X"
-                  : "O"
+                  ? "O"
+                  : "X"
               }`}
             </p>
           </td>

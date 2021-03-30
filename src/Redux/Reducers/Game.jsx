@@ -12,8 +12,7 @@ const initialGameState = () => ({
   matchId: "",
   boardState: ["-", "-", "-", "-", "-", "-", "-", "-", "-"],
   lastMove: { char: "", position: "" },
-  whoStarts: { player: "", char: "" },
-  nextTurn: "",
+  nextTurn: { player: "", char: "" },
 });
 
 const infoGame = (state = initialGameState(), action) => {
@@ -25,19 +24,17 @@ const infoGame = (state = initialGameState(), action) => {
       return {
         ...state,
         matchId: action.value[0],
-        whoStarts: { player: action.value[1], char: "" },
+        nextTurn: { player: action.value[1], char: "" },
       };
     case USER_CHOOSE_SYMBOL:
       return {
         ...state,
-        whoStarts: { player: "User", char: action.value },
-        nextTurn: action.value,
+        nextTurn: { player: "User", char: action.value },
       };
     case CPU_CHOOSE_SYMBOL:
       return {
         ...state,
-        whoStarts: { player: "CPU", char: action.value },
-        nextTurn: action.value,
+        nextTurn: { player: "CPU", char: action.value },
       };
     case ADD_CHAR_TO_BOARD:
       boardState[action.number] = action.value;
@@ -53,7 +50,7 @@ const infoGame = (state = initialGameState(), action) => {
     case CHANGE_TURN:
       return {
         ...state,
-        nextTurn: action.value,
+        nextTurn: { player: action.user, char: action.value },
       };
 
     default:

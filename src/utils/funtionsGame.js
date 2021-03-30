@@ -1,6 +1,10 @@
-export const nextTurn = (turn) => {
+export const nextTurnSymbol = (turn) => {
   if (turn === "X") return "O";
   return "X";
+};
+export const nextTurnPlayer = (turn) => {
+  if (turn === "User") return "CPU";
+  return "User";
 };
 
 export const IsX = (playerString, startGamePlayer, startGameSymbol) => {

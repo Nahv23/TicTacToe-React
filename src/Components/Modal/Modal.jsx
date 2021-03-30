@@ -19,7 +19,7 @@ const Modal = ({ handleClose, userChooseSymbol, title, subtitle, isUser }) => {
               <button
                 className="symbol-X"
                 type="button"
-                value="X"
+                value="O"
                 onClick={(event) => setsymbol(event.target.value)}
               >
                 X
@@ -27,7 +27,7 @@ const Modal = ({ handleClose, userChooseSymbol, title, subtitle, isUser }) => {
               <button
                 className="symbol-O"
                 type="button"
-                value="O"
+                value="X"
                 onClick={(event) => setsymbol(event.target.value)}
               >
                 O

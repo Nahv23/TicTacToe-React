@@ -23,14 +23,14 @@ const GameSpace = ({
 
   const cpuChooseSymbol = () => {
     const cpuSymbol = randomAssignedMark();
-    _setShowModal(false);
     cpuChooseSymbolAction(cpuSymbol);
+    _setShowModal(false);
   };
 
   if (
     _showModal &&
-    gameState.whoStarts.player === "User" &&
-    gameState.whoStarts.char === ""
+    gameState.nextTurn.player === "User" &&
+    gameState.nextTurn.char === ""
   ) {
     return (
       <div className="GameSpace" id="GameSpace">
@@ -48,8 +48,8 @@ const GameSpace = ({
     // eslint-disable-next-line no-else-return
   } else if (
     _showModal &&
-    gameState.whoStarts.player === "CPU" &&
-    gameState.whoStarts.char === ""
+    gameState.nextTurn.player === "CPU" &&
+    gameState.nextTurn.char === ""
   ) {
     return (
       <div className="GameSpace" id="GameSpace">

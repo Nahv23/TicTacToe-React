@@ -5,10 +5,10 @@ import Modal from "../Modal/Modal";
 
 // eslint-disable-next-line no-unused-vars
 import {
-  nextTurn,
+  nextTurnPlayer,
+  nextTurnSymbol,
   isBoardFull,
   isAWinner,
-  whichIsMySymbolAssigned,
 } from "../../utils/funtionsGame";
 
 import "./Board.css";
@@ -37,21 +37,32 @@ const Board = ({
       _setShowModal(true);
     }
     if (isBoardFull(gameState.boardState)) {
+      console.log("ENTRA");
       setisFinnishByBoardFull(true);
       _setShowModal(true);
     }
   }, [gameState.boardState]);
 
   const handlePlay = (numberCell) => {
-    addCharToBoardAction(gameState.nextTurn, numberCell);
-    addInfoToLastMoveAction(gameState.nextTurn, numberCell);
-    nextTurnChangeAction(nextTurn(gameState.nextTurn));
+    nextTurnChangeAction(
+      nextTurnPlayer(gameState.nextTurn.player),
+      nextTurnSymbol(gameState.nextTurn.char)
+    );
+    addCharToBoardAction(nextTurnSymbol(gameState.nextTurn.char), numberCell);
+    addInfoToLastMoveAction(
+      nextTurnSymbol(gameState.nextTurn.char),
+      numberCell
+    );
   };
 
-  if (!isFinnishByBoardFull && isFinnishByBoardFull && _showModal)
+  if (!isFinnishByWinner && isFinnishByBoardFull && _showModal)
     return (
       <section className="board game-finish">
-        <Modal title="Game Finish" subtitle="Tied" handleClose={_handleClose} />
+        <Modal
+          title="Game Finish"
+          subtitle="Draw !"
+          handleClose={_handleClose}
+        />
       </section>
     );
 
@@ -60,15 +71,7 @@ const Board = ({
       <section className="board game-finish">
         <Modal
           title="Game Finish"
-          subtitle={`${
-            whichIsMySymbolAssigned(
-              "User",
-              gameState.whoStarts.player,
-              gameState.whoStarts.char
-            )
-              ? "user"
-              : "CPU"
-          } won`}
+          subtitle={`${nextTurnPlayer(gameState.nextTurn.player)} won!`}
           handleClose={_handleClose}
         />
       </section>
@@ -102,8 +105,8 @@ const mapDispatchToProps = (dispatch) => ({
       value: symbol,
       number: position,
     }),
-  nextTurnChangeAction: (symbol) =>
-    dispatch({ type: "CHANGE_TURN", value: symbol }),
+  nextTurnChangeAction: (player, symbol) =>
+    dispatch({ type: "CHANGE_TURN", user: player, value: symbol }),
   restartGameAction: () => dispatch({ type: "RESTART_GAME" }),
 });
 
