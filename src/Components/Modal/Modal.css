@@ -1,4 +1,6 @@
 .modal {
+  color: cornsilk;
+  background: #282c34;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -6,17 +8,142 @@
   -webkit-transform: translate(-50%, -50%);
   padding: 2rem 3rem;
   display: inline-block;
-  border: 3px solid #333333;
-  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  border: 3px solid;
+  border-image: linear-gradient(to bottom, #ff0024, rgba(0, 0, 0, 0)) 1 100%;
   letter-spacing: 0.3ch;
-  background: #ffffff;
   -webkit-border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
   -moz-border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
   -ms-border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
   -o-border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
 }
 
-.modal > h3{
-    font-size: 1em;
+.modal-main > h3 {
+  font-size: 1.2em;
+  color: whitesmoke;
+  text-transform: uppercase;
+  text-align: center;
 }
 
+.modal .modal-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-footer > .options-symbols {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.options-symbols button {
+  width: 40%;
+  height: 6vw;
+  background-color: #3a3a3a;
+}
+
+button.symbol-X {
+  cursor: pointer;
+  color: #fb4264;
+  font-size: 4vw;
+  line-height: 5vw;
+  text-shadow: 0 0 3vw #f40a35;
+  animation: neonRed 3s linear infinite;
+  -moz-animation: neonRed 3s linear infinite;
+  -webkit-animation: neonRed 3s linear infinite;
+  -o-animation: neonRed 2s linear infinite;
+}
+
+@keyframes neonRed {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16,
+      0 0 10vw #fa1c16, 0 0 0.4vw #fed128, 0.5vw 0.5vw 0.1vw #806914;
+    color: #fed128;
+  }
+  50% {
+    text-shadow: 0 0 0.5vw #800e0b, 0 0 1.5vw #800e0b, 0 0 5vw #800e0b,
+      0 0 5vw #800e0b, 0 0 0.2vw #800e0b, 0.5vw 0.5vw 0.1vw #40340a;
+    color: #806914;
+  }
+}
+
+button.symbol-O {
+  cursor: pointer;
+  color: #426dfb;
+  font-size: 5vw;
+  line-height: 5vw;
+  text-shadow: 0 0 3vw #2356ff;
+  animation: fluxBlue 2s linear infinite;
+  -moz-animation: fluxBlue 2s linear infinite;
+  -webkit-animation: fluxBlue 2s linear infinite;
+  -o-animation: fluxBlue 2s linear infinite;
+}
+
+@keyframes fluxBlue {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff,
+      0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe, 0.5vw 0.5vw 0.1vw #147280;
+    color: #28d7fe;
+  }
+  50% {
+    text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
+      0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
+    color: #146c80;
+  }
+}
+
+button.start {
+  display: block;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #92de34;
+  width: 20vh;
+  height: 5vw;
+  border-radius: 30px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #025600;
+  background-size: 100% 100%;
+  box-shadow: 0 0 0 7px #92de34 inset;
+  margin-bottom: 15px;
+}
+button:disabled {
+  background-color: #313d22;
+  color: #152c15;
+  box-shadow: 0 0 0 7px #313d22 inset;
+}
+button.start.disabled:hover {
+  cursor: not-allowed;
+  background-color: #313d22;
+  color: #152c15;
+  box-shadow: 0 0 0 7px #313d22 inset;
+}
+
+button.start:not(.disabled):hover {
+  background-image: linear-gradient(
+    130deg,
+    transparent 10%,
+    #69bc22 10% 20%,
+    transparent 20% 30%,
+    #69bc22 30% 40%,
+    transparent 40% 50%,
+    #69bc22 50% 60%,
+    transparent 60% 70%,
+    #69bc22 70% 80%,
+    transparent 80% 90%,
+    #69bc22 90% 100%
+  );
+  animation: background 3s linear infinite;
+}
+
+@keyframes background {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}

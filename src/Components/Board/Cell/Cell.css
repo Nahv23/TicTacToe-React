@@ -1,4 +1,5 @@
 .square {
+  cursor: pointer;
   flex: 1 1 30%;
   height: 35%;
   background-color: #3a3a3a;

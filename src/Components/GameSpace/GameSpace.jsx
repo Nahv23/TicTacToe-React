@@ -36,8 +36,8 @@ const GameSpace = ({
       <div className="GameSpace" id="GameSpace">
         <section>
           <Modal
-            title="You first"
-            subtitle="Choose your symbol"
+            title="You go first"
+            subtitle="Choose your symbol:"
             isUser
             handleClose={_handleClose}
             userChooseSymbol={userChooseSymbol}

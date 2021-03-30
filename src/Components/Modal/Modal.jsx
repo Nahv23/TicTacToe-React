@@ -13,27 +13,30 @@ const Modal = ({ handleClose, userChooseSymbol, title, subtitle, isUser }) => {
       <section className="modal-main">
         {title && <h3>{title}</h3>}
         {subtitle && <h4>{subtitle}</h4>}
-        {isUser && (
-          <div>
-            <button
-              type="button"
-              value="X"
-              onClick={(event) => setsymbol(event.target.value)}
-            >
-              X
-            </button>
-            <button
-              type="button"
-              value="O"
-              onClick={(event) => setsymbol(event.target.value)}
-            >
-              O
-            </button>
-          </div>
-        )}
         <div className="modal-footer">
+          {isUser && (
+            <div className="options-symbols">
+              <button
+                className="symbol-X"
+                type="button"
+                value="X"
+                onClick={(event) => setsymbol(event.target.value)}
+              >
+                X
+              </button>
+              <button
+                className="symbol-O"
+                type="button"
+                value="O"
+                onClick={(event) => setsymbol(event.target.value)}
+              >
+                O
+              </button>
+            </div>
+          )}
           {isUser ? (
             <button
+              className={`start ${symbol === "" ? "disabled" : ""}`}
               disabled={`${symbol === "" ? "disabled" : ""}`}
               type="button"
               onClick={() => {
@@ -41,16 +44,17 @@ const Modal = ({ handleClose, userChooseSymbol, title, subtitle, isUser }) => {
                 handleClose();
               }}
             >
-              Acept
+              Start !
             </button>
           ) : (
             <button
+              className="start"
               type="button"
               onClick={() => {
                 handleClose();
               }}
             >
-              Acept
+              Start !
             </button>
           )}
         </div>
