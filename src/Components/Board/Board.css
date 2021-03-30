@@ -1,4 +1,4 @@
-.board{
+.board:not(.game-finish){
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -10,11 +10,14 @@
 	-webkit-box-shadow: -1px 3px 20px 7px rgb(174 179 243);
 	-moz-box-shadow: -1px 3px 20px 7px rgb(174 179 243);
 	box-shadow: -1px 3px 20px 7px rgb(174 179 243);
-}	
+}
+.board.game-finish{
+	background-color: #282c34;
+}		
 
 
 @media (max-height: 750px) {
-	.board {
+	.board:not(.game-finish) {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;

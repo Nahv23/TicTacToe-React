@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Cell from "./Cell/Cell";
+import Modal from "../Modal/Modal";
 
-import { nextTurn } from "../../utils/funtionsGame";
+// eslint-disable-next-line no-unused-vars
+import {
+  nextTurn,
+  isBoardFull,
+  isAWinner,
+  whichIsMySymbolAssigned,
+} from "../../utils/funtionsGame";
 
 import "./Board.css";
 
@@ -11,12 +18,61 @@ const Board = ({
   addCharToBoardAction,
   addInfoToLastMoveAction,
   nextTurnChangeAction,
+  restartGameAction,
 }) => {
-  const handleClick = (value) => {
-    addCharToBoardAction(gameState.nextTurn, value);
-    addInfoToLastMoveAction(gameState.nextTurn, value);
+  // eslint-disable-next-line no-unused-vars
+  const [isFinnishByWinner, setisFinnishByWinner] = useState(false);
+  const [isFinnishByBoardFull, setisFinnishByBoardFull] = useState(false);
+  const [_showModal, _setShowModal] = useState(false);
+
+  // eslint-disable-next-line no-underscore-dangle
+  const _handleClose = () => {
+    _setShowModal(false);
+    restartGameAction();
+  };
+
+  useEffect(() => {
+    if (isAWinner(gameState.boardState)) {
+      setisFinnishByWinner(true);
+      _setShowModal(true);
+    }
+    if (isBoardFull(gameState.boardState)) {
+      setisFinnishByBoardFull(true);
+      _setShowModal(true);
+    }
+  }, [gameState.boardState]);
+
+  const handlePlay = (numberCell) => {
+    addCharToBoardAction(gameState.nextTurn, numberCell);
+    addInfoToLastMoveAction(gameState.nextTurn, numberCell);
     nextTurnChangeAction(nextTurn(gameState.nextTurn));
   };
+
+  if (!isFinnishByBoardFull && isFinnishByBoardFull && _showModal)
+    return (
+      <section className="board game-finish">
+        <Modal title="Game Finish" subtitle="Tied" handleClose={_handleClose} />
+      </section>
+    );
+
+  if (isFinnishByWinner && _showModal)
+    return (
+      <section className="board game-finish">
+        <Modal
+          title="Game Finish"
+          subtitle={`${
+            whichIsMySymbolAssigned(
+              "User",
+              gameState.whoStarts.player,
+              gameState.whoStarts.char
+            )
+              ? "user"
+              : "CPU"
+          } won`}
+          handleClose={_handleClose}
+        />
+      </section>
+    );
 
   return (
     <section className="board">
@@ -26,7 +82,7 @@ const Board = ({
           // eslint-disable-next-line react/no-array-index-key
           key={idx}
           numberCell={idx}
-          cellSelected={handleClick}
+          cellSelected={handlePlay}
         />
       ))}
     </section>
@@ -48,6 +104,7 @@ const mapDispatchToProps = (dispatch) => ({
     }),
   nextTurnChangeAction: (symbol) =>
     dispatch({ type: "CHANGE_TURN", value: symbol }),
+  restartGameAction: () => dispatch({ type: "RESTART_GAME" }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

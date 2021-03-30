@@ -5,6 +5,7 @@ import {
   ADD_CHAR_TO_BOARD,
   ADD_INFO_TO_LAST_MOVE,
   CHANGE_TURN,
+  RESTART_GAME,
 } from "../Actions";
 
 const initialGameState = () => ({
@@ -18,6 +19,8 @@ const initialGameState = () => ({
 const infoGame = (state = initialGameState(), action) => {
   const boardState = [...state.boardState];
   switch (action.type) {
+    case RESTART_GAME:
+      return initialGameState();
     case INIT_GAME_STATE:
       return {
         ...state,

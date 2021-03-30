@@ -4,6 +4,7 @@ export const CPU_CHOOSE_SYMBOL = "CPU_CHOOSE_SYMBOL";
 export const ADD_CHAR_TO_BOARD = "ADD_CHAR_TO_BOARD";
 export const ADD_INFO_TO_LAST_MOVE = "ADD_INFO_TO_LAST_MOVE";
 export const CHANGE_TURN = "CHANGE_TURN";
+export const RESTART_GAME = "RESTART_GAME";
 
 export const loadIDGameAction = (dispatch) => (initGame) =>
   dispatch({ type: INIT_GAME_STATE, value: initGame });
@@ -22,3 +23,6 @@ export const addInfoToLastMoveAction = (dispatch) => (initGame) =>
 
 export const nextTurnChangeAction = (dispatch) => (initGame) =>
   dispatch({ type: CHANGE_TURN, value: initGame });
+
+export const restartGameAction = (dispatch) => () =>
+  dispatch({ type: RESTART_GAME });
