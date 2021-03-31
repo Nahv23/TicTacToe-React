@@ -32,3 +32,11 @@ export const isAWinner = (board) => {
 
   return regEx.test(board.join(""));
 };
+
+const generateNumRandom0to9 = () => Math.floor(Math.random() * (9 - 0 + 1) + 0);
+
+export const randomCellCPU = (board) => {
+  const positionRandom = generateNumRandom0to9();
+  if (board[positionRandom] === "-") return positionRandom;
+  return randomCellCPU(board);
+};

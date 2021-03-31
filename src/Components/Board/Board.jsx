@@ -9,6 +9,7 @@ import {
   nextTurnSymbol,
   isBoardFull,
   isAWinner,
+  randomCellCPU,
 } from "../../utils/funtionsGame";
 
 import "./Board.css";
@@ -31,7 +32,25 @@ const Board = ({
     restartGameAction();
   };
 
+  const handlePlay = (numberCell) => {
+    addCharToBoardAction(nextTurnSymbol(gameState.nextTurn.char), numberCell);
+    addInfoToLastMoveAction(
+      nextTurnSymbol(gameState.nextTurn.char),
+      numberCell
+    );
+    nextTurnChangeAction(
+      nextTurnPlayer(gameState.nextTurn.player),
+      nextTurnSymbol(gameState.nextTurn.char)
+    );
+  };
   useEffect(() => {
+    if (
+      gameState.nextTurn.player === "CPU" &&
+      !isBoardFull(gameState.boardState) &&
+      !isAWinner(gameState.boardState)
+    ) {
+      handlePlay(randomCellCPU(gameState.boardState));
+    }
     if (isAWinner(gameState.boardState)) {
       setisFinnishByWinner(true);
       _setShowModal(true);
@@ -42,23 +61,11 @@ const Board = ({
     }
   }, [gameState.boardState]);
 
-  const handlePlay = (numberCell) => {
-    nextTurnChangeAction(
-      nextTurnPlayer(gameState.nextTurn.player),
-      nextTurnSymbol(gameState.nextTurn.char)
-    );
-    addCharToBoardAction(nextTurnSymbol(gameState.nextTurn.char), numberCell);
-    addInfoToLastMoveAction(
-      nextTurnSymbol(gameState.nextTurn.char),
-      numberCell
-    );
-  };
-
   if (!isFinnishByWinner && isFinnishByBoardFull && _showModal)
     return (
       <section className="board game-finish">
         <Modal
-          title="Game Finish"
+          title="Game Finished"
           subtitle="Draw !"
           handleClose={_handleClose}
         />
@@ -69,7 +76,7 @@ const Board = ({
     return (
       <section className="board game-finish">
         <Modal
-          title="Game Finish"
+          title="Game Finished"
           subtitle={`${nextTurnPlayer(gameState.nextTurn.player)} won!`}
           handleClose={_handleClose}
         />
@@ -78,15 +85,16 @@ const Board = ({
 
   return (
     <section className="board">
-      {gameState.boardState.map((cell, idx) => (
-        <Cell
-          value={cell}
-          // eslint-disable-next-line react/no-array-index-key
-          key={idx}
-          numberCell={idx}
-          cellSelected={handlePlay}
-        />
-      ))}
+      {!isFinnishByWinner &&
+        gameState.boardState.map((cell, idx) => (
+          <Cell
+            value={cell}
+            // eslint-disable-next-line react/no-array-index-key
+            key={idx}
+            numberCell={idx}
+            cellSelected={handlePlay}
+          />
+        ))}
     </section>
   );
 };
